@@ -1,24 +1,20 @@
-import { useEffect } from "react";
-import { getPosts } from '../api'
+import { useEffect } from 'react';
+import { getPosts } from '../api/index';
+import { Home } from '../pages';
 
-
-function App() {
-
-  useEffect(async()=>{
-
-    const fetchPosts = async ()=>{
+export function App() {
+  useEffect(() => {
+    const fetchPosts = async () => {
       const response = await getPosts();
       console.log('response', response);
-    }
-    
+    };
+
     fetchPosts();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
-      Hello World
+      <Home />
     </div>
   );
 }
-
-export default App;
