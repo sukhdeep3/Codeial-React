@@ -12,14 +12,14 @@ export const setItemInLocalStorage = (key, value) => {
 
 export const getItemFromLocalStorage = (key) => {
   if (!key) {
-    return console.error('Can not get value from LS');
+    return console.error('Can not get value in the LS');
   }
   return localStorage.getItem(key);
 };
 
 export const removeItemFromLocalStorage = (key) => {
   if (!key) {
-    return console.error('Can not stoe is LS');
+    return console.error('Can not store in the LS');
   }
   localStorage.removeItem(key);
 };
