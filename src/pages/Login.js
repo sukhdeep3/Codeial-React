@@ -12,7 +12,7 @@ const Login = () => {
 
   // const auth = useProvideAuth();
   const auth = useAuth();
-  console.log(auth);
+  // console.log(auth);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

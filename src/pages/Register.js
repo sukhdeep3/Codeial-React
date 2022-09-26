@@ -4,18 +4,17 @@ import { useToasts } from 'react-toast-notifications';
 import { useAuth } from '../hooks';
 import styles from '../styles/login.module.css';
 
-
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signUp, setSignUp] = useState('');
-  const { addToast } = useToasts;
+  const { addToast } = useToasts();
   const auth = useAuth();
   const history = useHistory();
 
-  console.log(history);
+  // console.log(history);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,42 +23,36 @@ const Register = () => {
     let error = false;
     if (!name || !email || !password || !confirmPassword) {
       addToast('Please fill all the fields', {
-        appearence: 'error',
-        autoDismiss: true,
+        appearance: 'error',
       });
       error = true;
     }
     if (password !== confirmPassword) {
       addToast('Make sure password and confirm password matches', {
-        appearence: 'error',
-        autoDismiss: true,
+        appearance: 'error',
       });
-      error =true;
+      error = true;
     }
-    if(error){
-        return setSignUp(false);
+    if (error) {
+      return setSignUp(false);
     }
 
-    const response= await auth.signUp(name, email, password, confirmPassword);
+    const response = await auth.signup(name, email, password, confirmPassword);
 
-    if(response.success){
-        history.push('/login');
-        setSignUp(false)
+    if (response.success) {
+      history.push('/login');
+      setSignUp(false);
 
-        return(
-            addToast('User register successfully, please login in', {
-                appearence: 'success',
-                autoDismiss: true
-            })
-        )
+      return addToast('User register successfully, please login in', {
+        appearance: 'success',
+      });
     } else {
-        addToast(response.message, {
-            appearence: 'error',
-            autoDismiss: true,
-        })
+      addToast(response.message, {
+        appearance: 'error',
+      });
     }
 
-    // const setSignUp: (value: React.SetStateAction<string>)=>void
+    // const setSignUp= (value: React.SetStateAction<string>)=>void
     setSignUp(false);
   };
   return (
@@ -70,8 +63,8 @@ const Register = () => {
         <input
           type="FirstName"
           placeholder="abc"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
 
@@ -79,8 +72,8 @@ const Register = () => {
         <input
           type="email"
           placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
@@ -88,9 +81,9 @@ const Register = () => {
         <input
           type="password"
           placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete= 'new-password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="new-password"
         />
       </div>
 
@@ -98,14 +91,14 @@ const Register = () => {
         <input
           type="password"
           placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            autoComplete= 'new-password'
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          autoComplete="new-password"
         />
       </div>
 
       <div className={styles.field}>
-        <button> Sign up</button>
+        <button disabled={signUp}>{signUp ? 'signing up...' : 'Signup'}</button>
       </div>
     </form>
   );
