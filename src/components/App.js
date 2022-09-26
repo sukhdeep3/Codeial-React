@@ -2,7 +2,7 @@
 // import { getPosts } from '../api/index';
 import { Home } from '../pages';
 import { Login } from '../pages';
-import { Register } from '../pages';
+import { Register, Settings } from '../pages';
 import { Loader } from './';
 import { Navbar } from './';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -51,6 +51,10 @@ function App() {
 
           <Route exact path="/register">
             <Register />
+          </Route>
+
+          <Route exact path="/settings">
+            <Settings />
           </Route>
 
           <Route>
