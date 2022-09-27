@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { useAuth } from '../hooks';
 import styles from '../styles/login.module.css';
@@ -55,6 +55,10 @@ const Register = () => {
     // const setSignUp= (value: React.SetStateAction<string>)=>void
     setSignUp(false);
   };
+
+  if(auth.user){
+    return <Redirect to='/' />
+  }
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       <span className={styles.loginSignupHeader}>Register</span>

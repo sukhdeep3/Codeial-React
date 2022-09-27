@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
 // import { login } from '../api';
 import { useAuth } from '../hooks';
+import { Redirect } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -41,6 +42,10 @@ const Login = () => {
     }
     setLoggingIn(false);
   };
+
+  if (auth.user) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>

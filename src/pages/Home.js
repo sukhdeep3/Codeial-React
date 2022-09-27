@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { getPosts } from '../api';
 import { Comment, Loader } from '../components';
@@ -35,6 +35,7 @@ const Home = () => {
                 alt="user-pic"
               />
               <div>
+                {console.log(post.user)}
                 <span className={styles.postAuthor}>{post.user.name}</span>
                 <span className={styles.postTime}>a minute ago</span>
               </div>

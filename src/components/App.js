@@ -5,8 +5,29 @@ import { Login } from '../pages';
 import { Register, Settings } from '../pages';
 import { Loader } from './';
 import { Navbar } from './';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { useAuth } from '../hooks';
+
+function PrivateRoute({ children, ...rest }) {
+  const auth = useAuth();
+
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (auth.user) {
+          return children;
+        }
+        return <Redirect to="/login" />;
+      }}
+    />
+  );
+}
 
 const Page404 = () => {
   return <h1>404</h1>;
@@ -53,9 +74,9 @@ function App() {
             <Register />
           </Route>
 
-          <Route exact path="/settings">
+          <PrivateRoute exact path="/settings">
             <Settings />
-          </Route>
+          </PrivateRoute>
 
           <Route>
             <Page404 />
