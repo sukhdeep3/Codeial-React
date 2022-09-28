@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getPosts } from '../api';
 import { Comment, Loader } from '../components';
 import styles from '../styles/home.module.css';
@@ -24,6 +25,7 @@ const Home = () => {
   if (loading) {
     return <Loader />;
   }
+
   return (
     <div className={styles.postsList}>
       {posts.map((post) => (
@@ -36,7 +38,17 @@ const Home = () => {
               />
               <div>
                 {console.log(post.user)}
-                <span className={styles.postAuthor}>{post.user.name}</span>
+                <Link
+                  to={{
+                    pathname: `/user/${post.user._id}`,
+                    state: {
+                      user: post.user,
+                    },
+                  }}
+                  className={styles.postAuthor}
+                >
+                  {post.user.name}
+                </Link>
                 <span className={styles.postTime}>a minute ago</span>
               </div>
             </div>

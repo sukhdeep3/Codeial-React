@@ -2,7 +2,7 @@
 // import { getPosts } from '../api/index';
 import { Home } from '../pages';
 import { Login } from '../pages';
-import { Register, Settings } from '../pages';
+import { Register, Settings, UserProfile } from '../pages';
 import { Loader } from './';
 import { Navbar } from './';
 import {
@@ -76,6 +76,10 @@ function App() {
 
           <PrivateRoute exact path="/settings">
             <Settings />
+          </PrivateRoute>
+
+          <PrivateRoute exact path="/user/:userId">
+            <UserProfile />
           </PrivateRoute>
 
           <Route>
