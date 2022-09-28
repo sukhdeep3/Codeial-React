@@ -1,14 +1,45 @@
 import styles from '../styles/settings.module.css';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchUserProfile } from '../api';
+import { useToasts } from 'react-toast-notifications';
+import { Loader } from '../components';
+// import { useLocation } from 'react-router-dom';
 // import { useAuth } from '../hooks';
 // import { useState } from 'react';
 // import { useToasts } from 'react-toast-notifications';
 
 const UserProfile = () => {
-  const Location = useLocation();
-  console.log('Location', Location);
-  const { user = {} } = Location.state;
-  //   const { user } = Location.state; this is working for sometimes state shows undefined.
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const { userId } = useParams();
+  const { addToast } = useToasts();
+  const history = useHistory();
+
+  console.log('userId', userId);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await fetchUserProfile(userId);
+
+      if (response.success) {
+        setUser(response.data.user);
+      } else {
+        addToast(response.message, {
+          appearance: 'error',
+        });
+
+        return history.push('/');
+      }
+
+      setLoading(false);
+    };
+    getUser();
+  }, [userId, history, addToast]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.settings}>

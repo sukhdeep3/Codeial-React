@@ -77,9 +77,9 @@ const Home = () => {
 
             <div className={styles.postCommentsList}>
               {post.comments.map((comment) => (
-                <Comment comment={comment} />
+                <Comment comment={comment} key={`comment${comment._id}`} />
               ))}
-            </div>
+            </div> 
           </div>
         </div>
       ))}
