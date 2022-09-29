@@ -1,5 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import { getPosts } from '../api/index';
 import { Home } from '../pages';
 import { Login } from '../pages';
 import { Register, Settings, UserProfile } from '../pages';
@@ -34,22 +32,8 @@ const Page404 = () => {
 };
 
 function App() {
-  // const [posts, setPosts] = useState([]);
-  // // const [loading, setLoading] = useState(true);
   const auth = useAuth();
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const response = await getPosts();
-
-  //     if (response.success) {
-  //       setPosts(response.data.posts);
-  //     }
-
-  //     setLoading(false);
-  //   };
-
-  //   fetchPosts();
-  // }, []);
+  console.log(auth);
 
   if (auth.loading) {
     return <Loader />;
@@ -61,9 +45,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home
-            // posts={posts}
-            />
+            <Home />
           </Route>
 
           <Route exact path="/login">

@@ -37,7 +37,7 @@ const Home = () => {
                 alt="user-pic"
               />
               <div>
-                {console.log(post.user)}
+                {/* {console.log(post.user)} */}
                 <Link
                   to={{
                     pathname: `/user/${post.user._id}`,
