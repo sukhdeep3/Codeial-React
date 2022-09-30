@@ -13,6 +13,7 @@ import { useAuth } from '../hooks';
 
 function PrivateRoute({ children, ...rest }) {
   const auth = useAuth();
+  // console.log(auth);
 
   return (
     <Route

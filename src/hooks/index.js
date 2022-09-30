@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import {
-  addFriend,
+  // addFriend,
   editProfile,
   fetchUserFriends,
   login as userLogin,
@@ -111,14 +111,32 @@ export const useProvideAuth = () => {
     removeItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
   };
 
+  // const updateUserFriends = (addFriend, friend) => {
+  //   if (addFriend) {
+  //     setUser({
+  //       ...user,
+  //       friends: [...user.friendships, friend],
+  //     });
+  //     return;
+  //   }
+  // };
   const updateUserFriends = (addFriend, friend) => {
     if (addFriend) {
       setUser({
         ...user,
-        friendship: [...user.friendship, friend],
+        friendships: [...user.friendships, friend],
       });
       return;
     }
+
+    const newFriends = user.friends.filter(
+      (f) => f.to_user._id !== friend.to_user._id
+    );
+
+    setUser({
+      ...user,
+      friends: newFriends,
+    });
   };
 
   return {

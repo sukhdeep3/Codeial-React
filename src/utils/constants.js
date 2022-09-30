@@ -7,8 +7,8 @@ export const API_URLS = {
   posts: (page, limit) => `${API_ROOT}/posts?page=${page}&limit=${limit}`,
   createPost: (content) => `${API_ROOT}/posts/create`,
   createFriendship: (userId) =>
-    `${API_ROOT}/friendship/create_friendship?user_id=${userId}`,
-  friends: () => `${API_ROOT}/friendship/fetch_user_friends`,
+    `${API_ROOT}friendship/create_friendship?user_id=${userId}`,
+  friends: () => `${API_ROOT}friendship/fetch_user_friends`,
   removeFriend: (userId) =>
     `${API_ROOT}/friendship/remove_friendship?user_id=${userId}`,
   toggleLike: (itemId, itemType) =>
