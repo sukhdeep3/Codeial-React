@@ -216,9 +216,10 @@ const UserProfile = () => {
     // console.log(auth.updateUserFriends);
     // const { friendship } = response;
     if (response.success) {
-      const { friendship } = response.data;
+      const { friendships } = response.data;
 
-      auth.updateUserFriends(true, friendship);
+      const hello= auth.updateUserFriends(true, friendships);
+      console.log(hello);
       addToast('Friend added successfully!', {
         appearance: 'success',
       });
