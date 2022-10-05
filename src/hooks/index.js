@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import jwt from 'jwt-decode';
 
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../providers';
 import {
   editProfile,
   fetchUserFriends,
