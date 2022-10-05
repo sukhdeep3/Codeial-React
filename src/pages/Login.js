@@ -26,11 +26,6 @@ const Login = () => {
       });
     }
     const response = await auth.login(email, password);
-    // console.log('useAuth', authed.login.response);
-    // console.log('useProviderAuth', auth.login.response);
-
-    // console.log('response', response);
-    // console.log('response', response.success);
     if (response.success) {
       addToast('Sucessfully Login', {
         appearance: 'success',
