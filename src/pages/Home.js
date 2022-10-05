@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../api';
-import { Comment, FriendsList, Loader } from '../components';
+import { Comment, CreatePost, FriendsList, Loader } from '../components';
 import { useAuth } from '../hooks';
 import styles from '../styles/home.module.css';
 
@@ -31,6 +31,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.postsList}>
+        <CreatePost />
         {posts.map((post) => (
           <div className={styles.postWrapper} key={`post-${post._id}`}>
             <div className={styles.postHeader}>
@@ -55,7 +56,7 @@ const Home = () => {
                   <span className={styles.postTime}>a minute ago</span>
                 </div>
               </div>
-              <div className={styles.postContent}>{post.conent}</div>
+              <div className={styles.postContent}>{post.content}</div>
 
               <div className={styles.postActions}>
                 <div className={styles.postLike}>
@@ -63,7 +64,7 @@ const Home = () => {
                     src="https://cdn-icons-png.flaticon.com/128/535/535285.png"
                     alt="likes-icon"
                   />
-                  <span>5</span>
+                  <span>{post.likes.length}</span>
                 </div>
 
                 <div className={styles.postCommentsIcon}>

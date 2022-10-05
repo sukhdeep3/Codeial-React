@@ -21,7 +21,7 @@ const FriendsList = () => {
             <Link className={styles.friendsItem} to={`/user/${friend._id}`}>
               <div className={styles.friendsImg}>
                 <img
-                  src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+                  src="https://as2.ftcdn.net/v2/jpg/00/65/77/27/1000_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
                   alt=""
                 />
               </div>

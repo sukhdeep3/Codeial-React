@@ -3,5 +3,6 @@ import { Loader } from './Loader';
 import { Navbar } from './Navbar';
 import { Comment } from './Comment';
 import FriendsList from './FriendList';
+import CreatePost from './CreatePost';
 
-export { Loader, Navbar, Comment, FriendsList };
+export { Loader, Navbar, Comment, FriendsList, CreatePost };
