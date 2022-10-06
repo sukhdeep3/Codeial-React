@@ -104,3 +104,9 @@ export const addPost = (content) => {
     },
   });
 };
+
+export const postComments = () => {
+  return customFetch(API_URLS.comment(), {
+    method: 'POST',
+  });
+};
