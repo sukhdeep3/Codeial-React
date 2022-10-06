@@ -166,19 +166,21 @@ export const useProvidePosts = () => {
     setPosts(newPosts);
   };
 
-  const updateComments = async () => {
-    const response = await postComments();
+  const addComment = (comment, postId) => {
+    const newPosts = posts.map((post) => {
+      if (post._id === postId) {
+        return { ...post, comments: [...post.comments, comment] };
+      }
+      return post;
+    });
 
-    if (response.success) {
-      setPosts(response.data.posts);
-    } else {
-      return response.message;
-    }
+    setPosts(newPosts);
   };
+
   return {
     data: posts,
     loading,
     addPostsToState,
-    updateComments,
+    addComment,
   };
 };

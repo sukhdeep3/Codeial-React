@@ -2,7 +2,7 @@ import styles from '../styles/navbar.module.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks';
 
-export const Navbar = () => {
+const Navbar = () => {
   const auth = useAuth();
   return (
     <div className={styles.nav}>
@@ -53,4 +53,4 @@ export const Navbar = () => {
   );
 };
 
-// export default Navbar;
+export default Navbar;
