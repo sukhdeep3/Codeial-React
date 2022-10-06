@@ -59,6 +59,7 @@
   color: #616161;
   border-right: none;
   border-left: none;
+  justify-content: space-between;
 }
 .postActions img {
   height: 18px;
