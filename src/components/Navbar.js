@@ -2,11 +2,41 @@ import styles from '../styles/navbar.module.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { searchUsers } from '../api';
 
 const Navbar = () => {
-  const [results, setResults] = useState('');
-  const [searchText, setSearchText] = useState(false);
+  const [results, setResults] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const auth = useAuth();
+
+  useEffect(() => {
+    const searchEffect = async () => {
+      const response = await searchUsers(searchText);
+
+      if (response.success) {
+        setResults(response.data.users);
+      }
+    };
+
+    if (searchText.length > 2) {
+      searchEffect();
+    } else {
+      setResults([]);
+    }
+    searchEffect();
+  }, [searchText]);
+
+  window.document.addEventListener('click', function () {
+    setResults([]);
+    setSearchText('');
+  });
+
+  const setSearchContainer = () => {
+    setResults([]);
+    setSearchText('');
+  };
+
   return (
     <div className={styles.nav}>
       <div className={styles.leftDiv}>
@@ -20,32 +50,33 @@ const Navbar = () => {
       <div className={styles.searchContainer}>
         <img
           className={styles.searchIcon}
-          src="https://t3.ftcdn.net/jpg/01/05/18/78/240_F_105187826_f9QmMttoqksCW1abMmDCAv8q2u265Saa.jpg"
+          src="https://cdn-icons-png.flaticon.com/512/622/622669.png"
           alt=""
         />
         <input
           placeholder="Search Users"
-          value={results}
+          value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
+          onClick={(e) => e.stopPropagation()}
         />
         {results.length > 0 && (
           <div className={styles.searchResults}>
-            <ul>
-              {results.map((user) => {
-                <li
-                  className="styles.searchResultsRow"
-                  key={`users-${user._id}`}
-                >
-                  <Link to={`/users/${user._id}`}>
+            <ul onClick={(e) => e.stopPropagation()}>
+              {results.map((user) => (
+                <Link to={`/user/${user._id}`}>
+                  <li
+                    onClick={setSearchContainer}
+                    className={styles.searchResultsRow}
+                    key={`user-${user._id}`}
+                  >
                     <img
-                      src="https://as2.ftcdn.net/v2/jpg/00/65/77/27/1000_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
-                      alt="UserDp"
-                      className={styles.userDp}
+                      src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
+                      alt=""
                     />
                     <span>{user.name}</span>
-                  </Link>
-                </li>;
-              })}
+                  </li>
+                </Link>
+              ))}
             </ul>
           </div>
         )}
@@ -56,7 +87,7 @@ const Navbar = () => {
           <div className={styles.user}>
             <Link to="/settings">
               <img
-                src="https://as2.ftcdn.net/v2/jpg/00/65/77/27/1000_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
+                src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
                 alt=""
                 className={styles.userDp}
               />
