@@ -7,7 +7,6 @@ import {
   fetchUserFriends,
   getPosts,
   login as userLogin,
-  postComments,
   register,
 } from '../api';
 import {

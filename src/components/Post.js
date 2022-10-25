@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
@@ -10,7 +9,7 @@ import { Comment } from './';
 
 const Post = ({ post }) => {
   const [comment, setComment] = useState('');
-  const [creatingComment, setCreatingComment] = useState(false);
+  const [ setCreatingComment] = useState(false);
   const posts = usePosts();
   const { addToast } = useToasts();
 
@@ -117,10 +116,6 @@ const Post = ({ post }) => {
       </div>
     </div>
   );
-};
-
-Post.propTypes = {
-  posts: PropTypes.object.isRequired,
 };
 
 export default Post;
