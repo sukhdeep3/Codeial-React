@@ -59,7 +59,7 @@ const Navbar = () => {
           onChange={(e) => setSearchText(e.target.value)}
           onClick={(e) => e.stopPropagation()}
         />
-        {results.length > 0 && (
+        {results.length > 2 && (
           <div className={styles.searchResults}>
             <ul onClick={(e) => e.stopPropagation()}>
               {results.map((user) => (
