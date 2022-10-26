@@ -70,15 +70,26 @@ export const useProvideAuth = () => {
       };
     }
   };
-
   const login = async (email, password) => {
     const response = await userLogin(email, password);
+
     if (response.success) {
-      setUser(response.data.user);
+      // setUser(response.data);
       setItemInLocalStorage(
         LOCALSTORAGE_TOKEN_KEY,
         response.data.token ? response.data.token : null
       );
+      const response2 = await fetchUserFriends();
+
+      let friends = [];
+
+      if (response2.success) {
+        friends = response2.data.friends;
+      }
+
+      response.data.user.friends = friends;
+      setUser(response.data.user);
+
       return {
         success: true,
       };
