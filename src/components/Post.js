@@ -9,7 +9,7 @@ import { Comment } from './';
 
 const Post = ({ post }) => {
   const [comment, setComment] = useState('');
-  const [ setCreatingComment] = useState(false);
+  const [creatingComment, setCreatingComment] = useState(false);
   const posts = usePosts();
   const { addToast } = useToasts();
 
@@ -101,6 +101,7 @@ const Post = ({ post }) => {
         </div>
         <div className={styles.postCommentBox}>
           <input
+            disabled={creatingComment}
             placeholder="Start typing a comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
