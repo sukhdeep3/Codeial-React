@@ -27,7 +27,6 @@ export const removeItemFromLocalStorage = (key) => {
 export const getFormBody = (params) => {
   let formBody = [];
 
-  //   console.log('property', params);
 
   for (let property in params) {
     let encodedKey = encodeURIComponent(property);

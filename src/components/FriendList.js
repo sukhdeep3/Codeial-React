@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import styles from '../styles/home.module.css';
 import { useAuth } from '../hooks';
 

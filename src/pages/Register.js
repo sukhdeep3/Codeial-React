@@ -14,7 +14,6 @@ const Register = () => {
   const auth = useAuth();
   const history = useHistory();
 
-  // console.log(history);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +51,6 @@ const Register = () => {
       });
     }
 
-    // const setSignUp= (value: React.SetStateAction<string>)=>void
     setSignUp(false);
   };
 
