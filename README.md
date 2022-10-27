@@ -1,4 +1,4 @@
-URL: codeialreactapp.netlify.app
+URL: https://codeialreactapp.netlify.app/login
 
 
 
