@@ -13,7 +13,6 @@ const CreatePost = () => {
   const handleAddPostClick = async () => {
     setAddingPost(true);
 
-    //do some checks
     const response = await addPost(post);
 
     if (response.success) {
