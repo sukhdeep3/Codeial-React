@@ -16,6 +16,7 @@ const UserProfile = () => {
   const history = useHistory();
   const auth = useAuth();
 
+  
   useEffect(() => {
     const getUser = async () => {
       const response = await fetchUserProfile(userId);

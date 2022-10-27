@@ -57,6 +57,7 @@ const Register = () => {
   if(auth.user){
     return <Redirect to='/' />
   }
+  
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       <span className={styles.loginSignupHeader}>Register</span>

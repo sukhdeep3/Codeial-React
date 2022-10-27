@@ -12,6 +12,7 @@ const Settings = () => {
   const [savingForm, setSavingForm] = useState(false);
   const { addToast } = useToasts();
 
+  
   const editProfile = (e) => {
     e.preventDefault();
     setEditMode(true);

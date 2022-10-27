@@ -9,9 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loggingIn, setLoggingIn] = useState(false);
   const { addToast } = useToasts();
-
-
   const auth = useAuth();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

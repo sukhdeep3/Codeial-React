@@ -15,6 +15,7 @@ const Home = () => {
     return <Redirect to="/login" />;
   }
 
+  
   return (
     <div className={styles.home}>
       <div className={styles.postsList}>
