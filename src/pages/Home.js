@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Post, CreatePost, FriendsList, Loader } from '../components';
 import { useAuth, usePosts } from '../hooks';
 import styles from '../styles/home.module.css';
@@ -9,6 +9,10 @@ const Home = () => {
 
   if (posts.loading) {
     return <Loader />;
+  }
+
+  if (!auth.user) {
+    return <Redirect to="/login" />;
   }
 
   return (
