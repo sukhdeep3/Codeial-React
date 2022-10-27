@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
@@ -102,6 +101,7 @@ const Post = ({ post }) => {
         </div>
         <div className={styles.postCommentBox}>
           <input
+            disabled={creatingComment}
             placeholder="Start typing a comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
@@ -117,10 +117,6 @@ const Post = ({ post }) => {
       </div>
     </div>
   );
-};
-
-Post.propTypes = {
-  posts: PropTypes.object.isRequired,
 };
 
 export default Post;

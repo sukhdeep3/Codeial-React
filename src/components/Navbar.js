@@ -24,7 +24,6 @@ const Navbar = () => {
     } else {
       setResults([]);
     }
-    searchEffect();
   }, [searchText]);
 
   window.document.addEventListener('click', function () {
@@ -63,11 +62,10 @@ const Navbar = () => {
           <div className={styles.searchResults}>
             <ul onClick={(e) => e.stopPropagation()}>
               {results.map((user) => (
-                <Link to={`/user/${user._id}`}>
+                <Link key={`user-${user._id}`} to={`/user/${user._id}`}>
                   <li
                     onClick={setSearchContainer}
                     className={styles.searchResultsRow}
-                    key={`user-${user._id}`}
                   >
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"

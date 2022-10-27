@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
 import { toggleLike } from '../api';
-import { usePosts } from '../hooks';
 
 import styles from '../styles/home.module.css';
 
 const Comment = ({ comment }) => {
-  const posts = usePosts();
   const { addToast } = useToasts();
 
   const handleCommentLikeClick = async () => {
