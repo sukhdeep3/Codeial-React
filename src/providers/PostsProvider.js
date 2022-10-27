@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useProvidePosts, updateComments } from '../hooks';
+import { useProvidePosts } from '../hooks';
 const initialState = {
   posts: [''],
   loading: true,
